@@ -6,7 +6,9 @@ CFLAGS = 	-Wall -Wextra -Werror -Iheaders/
 
 SOURCE = 	so_long.c \
 			controls/pre_controls.c \
-			read_map/read_map.c
+			read_map/read_map.c \
+			gnl/get_next_line.c \
+			gnl/get_next_line_utils.c \
 
 LIBRARY = -L./mlx -lmlx -framework OpenGL -framework AppKit
 MINILIBX = mlx/
