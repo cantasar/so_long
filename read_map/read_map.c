@@ -1,16 +1,6 @@
 #include "../so_long.h"
 
-int append_end(t_data *game, char *line)
-{
-	(void) game;
-	if (!line)
-	{
-		return (0);
-	}
-	return (1);
-}
-
-void read_map(t_data *game, char *map)
+int read_map(t_data *game, char *map)
 {
 	char *line;
 	char *all;
@@ -19,7 +9,7 @@ void read_map(t_data *game, char *map)
 	game->map_fd = open(map, O_RDONLY);
 	printf("%d\n", game->map_fd);
 	game->height_map = 0;
-	
+
 	while (1)
 	{
 		game->height_map++;
@@ -32,9 +22,13 @@ void read_map(t_data *game, char *map)
 			exit(1);
 		}
 		printf("%s\n", line);
-		printf("%d\n", game->height_map);
-		ft_strjoin(all, line);
-		printf("%s\n", all);
+		// printf("%d\n", game->height_map);
+		all = gnl_strjoin(all, line);
 	}
+	if (game->map)
+		free(game->map);
+	game->map = ft_split(all, '\n');
+	printf("%s", game->map[0]);
 	close(game->map_fd);
+	return (1);
 }

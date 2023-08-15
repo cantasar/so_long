@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 10:39:26 by ctasar            #+#    #+#             */
-/*   Updated: 2023/07/24 13:12:23 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/15 14:46:13 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ char	*get_next_line(int fd);
 char	*read_all(int fd, char *all);
 char	*get_first_line(char *all);
 
-int		ft_strlen(char *s);
+int		gnl_strlen(char *s);
 int		check_nl(char *all);
-char	*ft_strjoin(char *all, char *buff);
+char	*gnl_strjoin(char *all, char *buff);
 
 #endif

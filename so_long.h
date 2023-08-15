@@ -9,6 +9,7 @@
 # include <fcntl.h>
 
 # include "gnl/get_next_line.h"
+# include "libft/libft.h"
 
 typedef	struct	s_data
 {
@@ -24,7 +25,7 @@ typedef	struct	s_data
 
 }	t_data;
 
-void read_map(t_data *game, char *map);
+int read_map(t_data *game, char *map);
 void ber_control(char *dest);
 
 char	*get_next_line(int fd);

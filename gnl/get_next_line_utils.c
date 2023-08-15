@@ -6,13 +6,13 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 10:56:56 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/14 22:10:37 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/15 14:46:49 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(char *s)
+int	gnl_strlen(char *s)
 {
 	int	i;
 
@@ -38,7 +38,7 @@ int	check_nl(char *all)
 	return (0);
 }
 
-char	*ft_strjoin(char *all, char *buff)
+char	*gnl_strjoin(char *all, char *buff)
 {
 	char	*new_str;
 	int		i;
@@ -49,7 +49,7 @@ char	*ft_strjoin(char *all, char *buff)
 		all = (char *)malloc(sizeof(char) * 1);
 		*all = '\0';
 	}
-	new_str = malloc(sizeof(char) * (ft_strlen(all) + ft_strlen(buff) + 1));
+	new_str = malloc(sizeof(char) * (gnl_strlen(all) + gnl_strlen(buff) + 1));
 	if (!new_str)
 		return (NULL);
 	i = 0;

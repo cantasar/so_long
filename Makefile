@@ -1,26 +1,42 @@
 NAME = so_long
+CFLAGS = -Wall -Wextra -Werror -I./minilibx -g
 
-CC = gcc
+LFLAGS = -framework AppKit -framework OpenGL -L./mlx -lmlx
+MLX = ./mlx/libmlx.a
 
-CFLAGS = 	-Wall -Wextra -Werror -Iheaders/
+LIBFT = -I./libft
+GNL = $(wildcard gnl/*c)
+GNLOBJS = $(GNL:.c=.o)
 
-SOURCE = 	so_long.c \
-			controls/pre_controls.c \
-			read_map/read_map.c \
-			gnl/get_next_line.c \
-			gnl/get_next_line_utils.c \
+SRCS = so_long.c \
+		controls/pre_controls.c \
+		read_map/read_map.c \
 
-LIBRARY = -L./mlx -lmlx -framework OpenGL -framework AppKit
-MINILIBX = mlx/
+OBJS = $(SRCS:.c=.o)
 
-all:
-	make -C $(MINILIBX)
-	@$(CC) $(CFLAGS) $(SOURCE) $(LIBRARY) -o $(NAME)
+all : $(MLX) $(NAME)
+
+$(MLX) :
+	make bonus -sC LIBFT
+	make -sC ./mlx
+
+$(NAME) : $(OBJS) $(GNLOBJS)
+	gcc $(OBJS) $(GNLOBJS) $(LFLAGS) ./libft/libft.a  -o $(NAME)
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	make clean -C $(MINILIBX)
+	rm -rf $(OBJS)
+	rm -rf ./gnl/*.o
+	make clean -C ./libft
 
-fclean: clean	
-	rm -rf $(NAME)
+fclean:
+	rm -rf $(OBJS) $(NAME)
+	rm -rf ./gnl/*.o
+	make clean -C ./mlx
+	make fclean -C ./libft
 
-re: clean fclean all
+re : fclean all
+
+.PHONY: clean fclean re

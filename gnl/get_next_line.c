@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 10:40:58 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/14 21:13:52 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/15 14:47:38 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*read_all(int fd, char *all)
 			return (NULL);
 		}
 		buff[count_bytes] = '\0';
-		all = ft_strjoin(all, buff);
+		all = gnl_strjoin(all, buff);
 	}
 	free(buff);
 	return (all);
@@ -56,7 +56,7 @@ char	*get_first_line(char *all)
 		line[i] = all[i];
 		i++;
 	}
-	if (all[i] == '\0')
+	if (all[i] == '\n')
 	{
 		line[i] = all[i];
 		i++;
@@ -80,7 +80,7 @@ char	*move_all(char *all)
 		all = NULL;
 		return (NULL);
 	}
-	new_all = (char *)malloc(sizeof(char) * (ft_strlen(all) - i + 1));
+	new_all = (char *)malloc(sizeof(char) * (gnl_strlen(all) - i + 1));
 	if (!new_all)
 		return (NULL);
 	i++;
