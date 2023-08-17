@@ -11,7 +11,6 @@ int main(int argc, char **argv)
 		game = (t_data *)malloc(sizeof(t_data) * 1);
 		game->height_map = 0;
 		read_map(game, argv[1]);
-
 	}
 	else
 	{

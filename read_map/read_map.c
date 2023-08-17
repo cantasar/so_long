@@ -3,36 +3,27 @@
 int read_map(t_data *game, char *map)
 {
 	char *line;
-	char *all;
 
-	all = NULL;
+	game->map_all = NULL;
 	game->map_fd = open(map, O_RDONLY);
-	printf("%d\n", game->map_fd);
 	game->height_map = 0;
-
 	while (1)
 	{
 		game->height_map++;
 		line = get_next_line(game->map_fd);
 		if (!line)
 			break;
-		if (line[0] == '\n')
-		{
-			write(1, "Empty line in map!\n", 19);
-			exit(1);
-		}
-		printf("%d\n", game->height_map);
-		all = gnl_strjoin(all, line);
+		empty_line(line);
+		game->map_all = gnl_strjoin(game->map_all, line);
+		free(line);
 	}
-	if (!all)
-	{
-		write(1, "Map is empty!  \n", 14);
-		exit(1);
-	}
-	
+	empty_map(game->map_all);
+	count_items(game, game->map_all);
 	if (game->map)
 		free(game->map);
-	game->map = ft_split(all, '\n');
+	game->map = ft_split(game->map_all, '\n');
+	game->control_map = ft_split(game->map_all, '\n');
 	close(game->map_fd);
+	free(game->map_all);
 	return (1);
 }
