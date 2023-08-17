@@ -12,9 +12,6 @@ int main(int argc, char **argv)
 		game->height_map = 0;
 		read_map(game, argv[1]);
 
-		//printf("%s", game->map[0]);
-		
-
 	}
 	else
 	{

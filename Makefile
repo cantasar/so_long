@@ -23,17 +23,15 @@ $(MLX) :
 $(NAME) : $(OBJS) $(GNLOBJS)
 	gcc $(OBJS) $(GNLOBJS) $(LFLAGS) ./libft/libft.a  -o $(NAME)
 
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $@
+# .c.o:
+# 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)
-	rm -rf ./gnl/*.o
-	make clean -C ./libft
+	rm -rf ./*/*.o
 
-fclean:
+fclean: clean
 	rm -rf $(OBJS) $(NAME)
-	rm -rf ./gnl/*.o
 	make clean -C ./mlx
 	make fclean -C ./libft
 

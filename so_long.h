@@ -18,6 +18,7 @@ typedef	struct	s_data
 
 	int map_fd;
 	char **map;
+	char **control_map;
 
 	int count_player;
 	int height_map;

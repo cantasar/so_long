@@ -21,14 +21,18 @@ int read_map(t_data *game, char *map)
 			write(1, "Empty line in map!\n", 19);
 			exit(1);
 		}
-		printf("%s\n", line);
-		// printf("%d\n", game->height_map);
+		printf("%d\n", game->height_map);
 		all = gnl_strjoin(all, line);
 	}
+	if (!all)
+	{
+		write(1, "Map is empty!  \n", 14);
+		exit(1);
+	}
+	
 	if (game->map)
 		free(game->map);
 	game->map = ft_split(all, '\n');
-	printf("%s", game->map[0]);
 	close(game->map_fd);
 	return (1);
 }
