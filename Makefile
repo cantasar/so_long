@@ -11,7 +11,12 @@ GNL		=	gnl/get_next_line.c \
 SRCS	=	so_long.c \
 			controls/pre_controls.c \
 			controls/map_controls.c \
+			controls/flood_fill.c \
+			controls/map_controls_1.c \
 			read_map/read_map.c \
+			window/create_win.c \
+			window/clear_win.c \
+			window/put_window.c \
 
 OBJS	=	$(SRCS:.c=.o)
 GNLOBJS	=	$(GNL:.c=.o)
@@ -36,8 +41,9 @@ fclean: clean
 	rm -rf $(OBJS) $(NAME)
 	make clean -C ./mlx
 	make fclean -C ./libft
+	rm -rf *.o
 	rm -rf ./*/*.a
 
 re : fclean all
 
-.PHONY: clean fclean re
+.PHONY: so_long clean fclean re

@@ -1,6 +1,14 @@
-//width control
-//wall cont
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_controls.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/18 11:12:58 by ctasar            #+#    #+#             */
+/*   Updated: 2023/08/18 11:41:04 by ctasar           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../so_long.h"
 
@@ -64,7 +72,7 @@ void undefined_char(t_data *game)
 	i = 0;
 	while (game->map_all[i])
 	{
-		if (game->map_all[i] == '0' || game->map_all[i] == '1' || game->map_all[i] == 'P' || game->map_all[i] == 'C' || game->map_all[i] == 'J' || game->map_all[i] == 'E')
+		if (game->map_all[i] == '0' || game->map_all[i] == '1' || game->map_all[i] == 'P' || game->map_all[i] == 'C' || game->map_all[i] == 'J' || game->map_all[i] == 'E' || game->map_all[i] == '\n')
 		{
 			i++;
 		}else

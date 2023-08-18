@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/18 11:13:18 by ctasar            #+#    #+#             */
+/*   Updated: 2023/08/18 23:19:01 by ctasar           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -13,8 +25,8 @@
 
 typedef	struct	s_data
 {
-	// void *mlx;
-	// void *mlx_win;
+	void *mlx;
+	void *mlx_win;
 
 	int map_fd;
 	char *map_all;
@@ -24,11 +36,24 @@ typedef	struct	s_data
 	int count_player;
 	int count_col;
 	int count_exit;
-	int count_start;
 	int count_enemy;
 
+	int p_x;
+	int p_y;
+	int e_x;
+	int e_y;
+	
+	int score;
+
 	int height_map;
-	// int width_map;
+	int width_map;
+
+	void *bg;
+	void *chr;
+	void *block;
+	void *exit;
+	void *coin;
+	
 
 }	t_data;
 
@@ -39,7 +64,14 @@ void empty_map(char *all);
 void count_items(t_data *game, char *all);
 void check_counts(t_data *game);
 void undefined_char(t_data *game);
+void is_rectangular(t_data *game);
+void wall_control(t_data *game);
 
+void	flood_fill(t_data *game, int x, int y);
+void	check_filled_map(t_data *game);
+
+void	create_win(t_data *game);
+void	close_win(t_data *game);
 
 char	*get_next_line(int fd);
 
