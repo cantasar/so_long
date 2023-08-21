@@ -6,16 +6,16 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 15:41:22 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/19 12:46:34 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/22 00:27:51 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void loc_P(t_data *game)
+void	loc_p(t_data *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (game->map[i])
@@ -39,9 +39,9 @@ void loc_P(t_data *game)
 	}
 }
 
-int read_map(t_data *game, char *map)
+int	read_map(t_data *game, char *map)
 {
-	char *line;
+	char	*line;
 
 	game->map_all = NULL;
 	game->map_fd = open(map, O_RDONLY);
@@ -49,7 +49,7 @@ int read_map(t_data *game, char *map)
 	{
 		line = get_next_line(game->map_fd);
 		if (!line)
-			break;
+			break ;
 		game->height_map++;
 		empty_line(line);
 		game->map_all = gnl_strjoin(game->map_all, line);

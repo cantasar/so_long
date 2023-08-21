@@ -1,5 +1,5 @@
 NAME	=	so_long
-CFLAGS	=	-Wall -Wextra -Werror -I./minilibx -g
+CFLAGS	=	-Wall -Wextra -Werror -I./mlx -g
 
 LFLAGS	=	-framework AppKit -framework OpenGL -L./mlx -lmlx
 MLX		=	./mlx/libmlx.a
@@ -30,9 +30,6 @@ $(MLX):
 
 $(NAME): $(OBJS) $(GNLOBJS)
 	gcc $(OBJS) $(GNLOBJS) $(LFLAGS) ./libft/libft.a  -o $(NAME)
-
-# .c.o:
-# 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)

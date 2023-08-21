@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 18:57:21 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/15 15:18:05 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/22 00:31:35 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		s1 = "\0";
 	}
 	if (!s2)
-		return(0);
+		return (0);
 	new_str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!new_str)
 		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
+	i = -1;
+	while (s1[i++])
 		new_str[i] = s1[i];
-		i++;
-	}
 	j = 0;
 	while (s2[j])
 	{

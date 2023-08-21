@@ -6,16 +6,16 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 14:37:14 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/20 13:27:15 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/22 00:20:05 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void check_filled_map(t_data *game)
+void	check_filled_map(t_data *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (game->control_map[i])
@@ -23,28 +23,27 @@ void check_filled_map(t_data *game)
 		j = 0;
 		while (game->control_map[i][j])
 		{
-			if (game->control_map[i][j] == 'C' )
+			if (game->control_map[i][j++] == 'C' )
 			{
 				write(1, "Collectible blocked\n", 21);
 				exit(1);
 			}
-			j++;
 		}
 		i++;
 	}
-	if (game->control_map[game->e_y - 1][game->e_x] == '*' || game->control_map[game->e_y + 1][game->e_x] == '*' || game->control_map[game->e_y][game->e_x - 1] == '*' || game->control_map[game->e_y][game->e_x + 1] == '*')
-	{
-		return ;
-	}else
+	if (!(game->control_map[game->e_y - 1][game->e_x] == '*' || \
+		game->control_map[game->e_y + 1][game->e_x] == '*' || \
+		game->control_map[game->e_y][game->e_x - 1] == '*' || \
+		game->control_map[game->e_y][game->e_x + 1] == '*'))
 	{
 		write(1, "Exit blocked\n", 14);
-		exit(1);	
+		exit(1);
 	}
 }
 
-void is_rectangular(t_data *game)
+void	is_rectangular(t_data *game)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	game->width_map = ft_strlen(game->map[0]);
@@ -60,7 +59,7 @@ void is_rectangular(t_data *game)
 	wall_control(game);
 }
 
-void wall_control(t_data *game)
+void	wall_control(t_data *game)
 {
 	int	i;
 

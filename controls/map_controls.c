@@ -6,13 +6,13 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 11:12:58 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/18 11:41:04 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/22 00:21:52 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void empty_line(char *line)
+void	empty_line(char *line)
 {
 	if (line[0] == '\n')
 	{
@@ -21,7 +21,7 @@ void empty_line(char *line)
 	}
 }
 
-void empty_map(char *all)
+void	empty_map(char *all)
 {
 	if (!all)
 	{
@@ -30,9 +30,9 @@ void empty_map(char *all)
 	}
 }
 
-void count_items(t_data *game, char *all)
+void	count_items(t_data *game, char *all)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	undefined_char(game);
@@ -51,9 +51,10 @@ void count_items(t_data *game, char *all)
 	check_counts(game);
 }
 
-void check_counts(t_data *game)
+void	check_counts(t_data *game)
 {
-	if (game->count_player != 1 || game->count_exit != 1 || game->count_col <= 0)
+	if (game->count_player != 1 || \
+		game->count_exit != 1 || game->count_col <= 0)
 	{
 		if (game->count_player != 1)
 			write(1, "Number of player must be 1\n", 27);
@@ -65,20 +66,23 @@ void check_counts(t_data *game)
 	}
 }
 
-void undefined_char(t_data *game)
+void	undefined_char(t_data *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (game->map_all[i])
 	{
-		if (game->map_all[i] == '0' || game->map_all[i] == '1' || game->map_all[i] == 'P' || game->map_all[i] == 'C' || game->map_all[i] == 'J' || game->map_all[i] == 'E' || game->map_all[i] == '\n')
+		if (game->map_all[i] == '0' || game->map_all[i] == '1' || \
+			game->map_all[i] == 'P' || game->map_all[i] == 'C' || \
+			game->map_all[i] == 'J' || game->map_all[i] == 'E' || \
+			game->map_all[i] == '\n')
 		{
 			i++;
-		}else
+		}
+		else
 		{
 			write(1, "undefined char in map\n", 23);
-			printf("%c", game->map_all[i]);
 			exit(1);
 		}
 	}
