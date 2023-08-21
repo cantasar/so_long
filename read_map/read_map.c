@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 15:41:22 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/18 20:16:05 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/19 12:46:34 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void loc_P(t_data *game)
 	int j;
 
 	i = 0;
-	j = 0;
-	while (game->map[i][j])
+	while (game->map[i])
 	{
+		j = 0;
 		while (game->map[i][j])
 		{
 			if (game->map[i][j] == 'P')
@@ -62,7 +62,6 @@ int read_map(t_data *game, char *map)
 	game->map = ft_split(game->map_all, '\n');
 	is_rectangular(game);
 	game->control_map = ft_split(game->map_all, '\n');
-	loc_P(game);
 	close(game->map_fd);
 	free(game->map_all);
 	return (1);

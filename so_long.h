@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 11:13:18 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/18 23:19:01 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/20 22:55:48 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,15 @@ typedef	struct	s_data
 	void *chr;
 	void *block;
 	void *exit;
+	void *enemy;
 	void *coin;
 	
 
 }	t_data;
 
 int read_map(t_data *game, char *map);
+void loc_P(t_data *game);
+
 void ber_control(char *dest);
 void empty_line(char *line);
 void empty_map(char *all);
@@ -70,8 +73,12 @@ void wall_control(t_data *game);
 void	flood_fill(t_data *game, int x, int y);
 void	check_filled_map(t_data *game);
 
+void	get_xpm(t_data *game);
 void	create_win(t_data *game);
-void	close_win(t_data *game);
+int	close_win(t_data *game);
+int		hook_keys(int keycode, t_data *game);
+void	put_textures(t_data *game);
+void	put_text(t_data *game);
 
 char	*get_next_line(int fd);
 

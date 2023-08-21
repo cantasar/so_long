@@ -14,9 +14,9 @@ SRCS	=	so_long.c \
 			controls/flood_fill.c \
 			controls/map_controls_1.c \
 			read_map/read_map.c \
-			window/create_win.c \
+			window/key_control.c \
 			window/clear_win.c \
-			window/put_window.c \
+			window/put_textures.c \
 
 OBJS	=	$(SRCS:.c=.o)
 GNLOBJS	=	$(GNL:.c=.o)

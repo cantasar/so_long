@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 11:16:00 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/18 15:27:39 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/20 23:17:44 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	top(t_data *game, int x, int y)
 {
-	if (game->control_map[y - 1][x] && game->control_map[y - 1][x] != '1' && game->control_map[y - 1][x] != '*')
+	if (game->control_map[y - 1][x] && game->control_map[y - 1][x] != '1' && game->control_map[y - 1][x] != '*' && game->control_map[y - 1][x] != 'E' && game->control_map[y - 1][x] != 'J')
 	{
 		y--;
 		game->control_map[y][x] = '*';
@@ -24,7 +24,7 @@ void	top(t_data *game, int x, int y)
 }
 void	bottom(t_data *game, int x, int y)
 {
-	if (game->control_map[y + 1][x] && game->control_map[y + 1][x] != '1' && game->control_map[y + 1][x] != '*')
+	if (game->control_map[y + 1][x] && game->control_map[y + 1][x] != '1' && game->control_map[y + 1][x] != '*' && game->control_map[y + 1][x] != 'E' && game->control_map[y + 1][x] != 'J')
 	{
 		y++;
 		game->control_map[y][x] = '*';
@@ -34,7 +34,7 @@ void	bottom(t_data *game, int x, int y)
 }
 void	left(t_data *game, int x, int y)
 {
-	if (game->control_map[y][x - 1] && game->control_map[y][x - 1] != '1' && game->control_map[y][x - 1] != '*')
+	if (game->control_map[y][x - 1] && game->control_map[y][x - 1] != '1' && game->control_map[y][x - 1] != '*' && game->control_map[y][x - 1] != 'E' && game->control_map[y][x - 1] != 'J')
 	{
 		x--;
 		game->control_map[y][x] = '*';
@@ -44,7 +44,7 @@ void	left(t_data *game, int x, int y)
 }
 void	right(t_data *game, int x, int y)
 {
-	if (game->control_map[y][x + 1] && game->control_map[y][x + 1] != '1' && game->control_map[y][x + 1] != '*')
+	if (game->control_map[y][x + 1] && game->control_map[y][x + 1] != '1' && game->control_map[y][x + 1] != '*' && game->control_map[y][x + 1] != 'E' && game->control_map[y][x + 1] != 'J')
 	{
 		x++;
 		game->control_map[y][x] = '*';
