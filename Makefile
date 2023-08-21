@@ -17,6 +17,7 @@ SRCS	=	so_long.c \
 			window/key_control.c \
 			window/clear_win.c \
 			window/put_textures.c \
+			animation/animate_coin.c \
 
 OBJS	=	$(SRCS:.c=.o)
 GNLOBJS	=	$(GNL:.c=.o)

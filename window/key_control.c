@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:09:17 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/20 23:13:39 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/21 20:04:19 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	player_move(t_data *game, int x, int y);
 
 int hook_keys(int keycode, t_data *game)
 {
-	mlx_clear_window(game->mlx, game->mlx_win);
 	if (keycode == 2)
 		player_move(game, game->p_x + 1, game->p_y);
 	if (keycode == 0)
@@ -27,7 +26,7 @@ int hook_keys(int keycode, t_data *game)
 		player_move(game, game->p_x, game->p_y - 1);
 	if (keycode == 53)
 		close_win(game);
-	put_textures(game);
+	//put_textures(game);
 	return (1);
 }
 

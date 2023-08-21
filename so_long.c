@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 11:13:10 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/20 22:56:15 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/21 19:56:35 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,15 @@ int main(int argc, char **argv)
 		loc_P(game);
 		flood_fill(game, 1, 1);
 		check_filled_map(game);
-		int i = 0;
-		while (game->map[i])
-		{
-			printf("%s\n", game->control_map[i++]);
-		}
-		
-		// create_win(game);
 		game->mlx = mlx_init();
-		game->mlx_win = mlx_new_window(game->mlx, game->width_map * 64, game->height_map * 64 + 20, "sooooo_long");
 		get_xpm(game);
+		game->mlx_win = mlx_new_window(game->mlx, game->width_map * 64, game->height_map * 64 + 20, "sooooo_long");
 		put_textures(game);
 		put_text(game);
-		mlx_hook(game->mlx_win, 2, 1L<<0, hook_keys, game);
+		mlx_hook(game->mlx_win, 2, 1L<<2, hook_keys, game);
 		mlx_hook(game->mlx_win, 17, 0, close_win, game);
+		mlx_loop_hook(game->mlx, loop, game);
 		mlx_loop(game->mlx);
-
-		while (1)
-		{
-			getchar();
-		}
-		
-		
 	}
 	else
 	{

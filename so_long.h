@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 11:13:18 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/20 22:55:48 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/21 19:55:56 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,12 @@ typedef	struct	s_data
 	void *block;
 	void *exit;
 	void *enemy;
+	void *coin_cur;
 	void *coin;
-	
+	void *coin_l;
+	void *coin_r;
+
+	int animate_count;
 
 }	t_data;
 
@@ -79,6 +83,9 @@ int	close_win(t_data *game);
 int		hook_keys(int keycode, t_data *game);
 void	put_textures(t_data *game);
 void	put_text(t_data *game);
+
+void	change_coin(t_data *game);
+int		loop(t_data *game);
 
 char	*get_next_line(int fd);
 

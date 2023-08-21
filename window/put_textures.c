@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 20:20:24 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/20 22:56:25 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/21 19:56:06 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ void	get_xpm(t_data *game)
 	game->bg = mlx_xpm_file_to_image(game->mlx, "./textures/bg2.xpm", &w, &w);
 	game->chr = mlx_xpm_file_to_image(game->mlx, "./textures/by.xpm", &w, &w);
 	game->block = mlx_xpm_file_to_image(game->mlx, "./textures/block1.xpm", &w, &w);
-	game->coin = mlx_xpm_file_to_image(game->mlx, "./textures/bb8.xpm", &w, &w);
 	game->enemy = mlx_xpm_file_to_image(game->mlx, "./textures/enemy1.xpm", &w, &w);
 	game->exit = mlx_xpm_file_to_image(game->mlx, "./textures/exit2.xpm", &w, &w);
+	//game->coin = mlx_xpm_file_to_image(game->mlx, "./textures/bb8.xpm", &w, &w);
+	game->coin_l = mlx_xpm_file_to_image(game->mlx, "./textures/soll.xpm", &w, &w);
+	game->coin_r = mlx_xpm_file_to_image(game->mlx, "./textures/sagg.xpm", &w, &w);
 }
 
 void	put_text(t_data *game)
@@ -34,6 +36,8 @@ void	put_text(t_data *game)
 
 void	put_item(char type,int x, int y, t_data *game)
 {
+	if (!game->coin_cur)
+		game->coin_cur = game->coin_l;
 	if (type == '1' || type == '0' || type == 'P' || type == 'C' || type == 'E' || type == 'J')
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->bg, x, y);
 	if (type == '1')
@@ -41,7 +45,7 @@ void	put_item(char type,int x, int y, t_data *game)
 	if (type == 'P')
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->chr, x, y);
 	if (type == 'C')
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->coin, x, y);
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->coin_cur, x, y);
 	if (type == 'E')
 		mlx_put_image_to_window(game->mlx, game->mlx_win, game->exit, x, y);	
 	if (type == 'J')
