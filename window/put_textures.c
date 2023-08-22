@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 20:20:24 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/22 00:46:52 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/22 11:43:37 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	put_text(t_data *game)
 	char	*str;
 
 	str = ft_itoa(game->score);
-	mlx_string_put(game->mlx, game->mlx_win, 10, 10, 0xFFFFFFFF, str);
+	mlx_string_put(game->mlx, game->mlx_win, 10, 20, 0xFFFFFFFF, str);
 	free(str);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 11:13:10 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/22 00:47:46 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/22 11:08:52 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		write(1, "Wrong usage\n./so_long <map path>\n", 33);
+		ft_printf("Wrong usage\n./so_long <map path>\n");
 		return (0);
 	}
 	ber_control(argv[1]);
 	game = (t_data *)malloc(sizeof(t_data) * 1);
-	game->height_map = 0;
 	read_map(game, argv[1]);
 	loc_p(game);
 	flood_fill(game, 1, 1);

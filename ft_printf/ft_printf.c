@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pre_controls.c                                     :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/18 11:13:02 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/22 11:07:23 by ctasar           ###   ########.fr       */
+/*   Created: 2023/07/15 09:50:24 by ctasar            #+#    #+#             */
+/*   Updated: 2023/07/15 13:46:16 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "ft_printf.h"
 
-void	ber_control(char *dest)
+int	ft_printf(const char *str, ...)
 {
-	int	i;
-	int	fd;
+	va_list	list;
+	int		i;
+	int		len;
 
 	i = 0;
-	while (dest[i])
-		i++;
-	i--;
-	if (dest[i] != 'r' || dest[i - 1] != 'e' || \
-		dest[i - 2] != 'b' || dest[i - 3] != '.')
+	len = 0;
+	va_start(list, str);
+	while (str[i])
 	{
-		ft_printf("Map is not a '.ber' file\n");
-		exit(1);
+		if (str[i] == '%')
+		{
+			len += type_check(list, str[i + 1]);
+			i += 2;
+		}
+		else
+		{
+			len += ft_putchar(str[i]);
+			i++;
+		}
 	}
-	fd = open(dest, O_RDONLY);
-	if (fd <= 0)
-	{
-		close(fd);
-		ft_printf("map destination is not correct or no file\n");
-		exit(1);
-	}
-	close(fd);
+	va_end(list);
+	return (len);
 }

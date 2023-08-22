@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pre_controls.c                                     :+:      :+:    :+:   */
+/*   printf_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/18 11:13:02 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/22 11:07:23 by ctasar           ###   ########.fr       */
+/*   Created: 2023/07/15 11:07:38 by ctasar            #+#    #+#             */
+/*   Updated: 2023/07/15 15:13:50 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "ft_printf.h"
 
-void	ber_control(char *dest)
+int	ptohex(void *p)
 {
-	int	i;
-	int	fd;
+	int	count;
 
-	i = 0;
-	while (dest[i])
-		i++;
-	i--;
-	if (dest[i] != 'r' || dest[i - 1] != 'e' || \
-		dest[i - 2] != 'b' || dest[i - 3] != '.')
-	{
-		ft_printf("Map is not a '.ber' file\n");
-		exit(1);
-	}
-	fd = open(dest, O_RDONLY);
-	if (fd <= 0)
-	{
-		close(fd);
-		ft_printf("map destination is not correct or no file\n");
-		exit(1);
-	}
-	close(fd);
+	count = 0;
+	count += ft_putstr("0x");
+	count += converter((unsigned long)p, "0123456789abcdef", 16);
+	return (count);
+}
+
+int	converter(unsigned long p, char *s, unsigned int base)
+{
+	int	count;
+
+	count = 0;
+	if (p >= base)
+		count += converter(p / base, s, base);
+	ft_putchar(s[p % base]);
+	return (count + 1);
 }

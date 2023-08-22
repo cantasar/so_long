@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 11:12:58 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/22 00:21:52 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/22 11:06:53 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	empty_line(char *line)
 {
 	if (line[0] == '\n')
 	{
-		write(1, "Empty line in map!\n", 19);
+		ft_printf("Empty line in map!\n");
 		exit(1);
 	}
 }
@@ -25,7 +25,7 @@ void	empty_map(char *all)
 {
 	if (!all)
 	{
-		write(1, "Map is empty!  \n", 14);
+		ft_printf("Map is empty!\n");
 		exit(1);
 	}
 }
@@ -57,11 +57,11 @@ void	check_counts(t_data *game)
 		game->count_exit != 1 || game->count_col <= 0)
 	{
 		if (game->count_player != 1)
-			write(1, "Number of player must be 1\n", 27);
+			ft_printf("Number of player must be 1\n");
 		if (game->count_exit != 1)
-			write(1, "Number of exit must be 1\n", 25);
+			ft_printf("Number of exit must be 1\n");
 		if (game->count_col <= 0)
-			write(1, "Must contain at least one collectible\n", 38);
+			ft_printf("Must contain at least one collectible\n");
 		exit(1);
 	}
 }
@@ -82,7 +82,7 @@ void	undefined_char(t_data *game)
 		}
 		else
 		{
-			write(1, "undefined char in map\n", 23);
+			ft_printf("undefined char in map <%c>\n", game->map_all[i]);
 			exit(1);
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 11:13:18 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/22 00:30:34 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/22 11:09:28 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 # include "gnl/get_next_line.h"
 # include "libft/libft.h"
+# include "ft_printf/ft_printf.h"
 
 typedef struct s_data
 {
@@ -88,5 +89,6 @@ void	change_coin(t_data *game);
 int		loop(t_data *game);
 
 char	*get_next_line(int fd);
+int	ft_printf(const char *str, ...);
 
 #endif

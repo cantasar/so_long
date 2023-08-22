@@ -4,9 +4,12 @@ CFLAGS	=	-Wall -Wextra -Werror -I./mlx -g
 LFLAGS	=	-framework AppKit -framework OpenGL -L./mlx -lmlx
 MLX		=	./mlx/libmlx.a
 
-LIBFT	=	-I./libft
+LIBFT	=	./libft
+
 GNL		=	gnl/get_next_line.c \
 			gnl/get_next_line_utils.c 
+
+PRINTF	=	./ft_printf
 
 SRCS	=	so_long.c \
 			controls/pre_controls.c \
@@ -25,22 +28,25 @@ GNLOBJS	=	$(GNL:.c=.o)
 all : $(MLX) $(NAME)
 
 $(MLX):
+	make -C $(PRINTF)
 	make bonus -sC LIBFT
 	make -sC ./mlx
 
 $(NAME): $(OBJS) $(GNLOBJS)
-	gcc $(OBJS) $(GNLOBJS) $(LFLAGS) ./libft/libft.a  -o $(NAME)
+	gcc $(OBJS) $(GNLOBJS) $(LFLAGS) ./libft/libft.a ./ft_printf/libftprintf.a -o $(NAME)
 
 clean:
 	rm -rf $(OBJS)
-	rm -rf ./*/*.o
+	make clean -C $(LIBFT)
+	make clean -C $(PRINTF)
+	rm -rf ./mlx/*.o
+	rm -rf ./gnl/*.o
 
 fclean: clean
-	rm -rf $(OBJS) $(NAME)
 	make clean -C ./mlx
-	make fclean -C ./libft
-	rm -rf *.o
-	rm -rf ./*/*.a
+	make fclean -C $(LIBFT)
+	make fclean -C $(PRINTF)
+	rm -rf $(OBJS) $(NAME)
 
 re : fclean all
 
