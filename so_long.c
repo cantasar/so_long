@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 11:13:10 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/25 11:56:54 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/25 16:56:26 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	game->mlx_win = mlx_new_window(game->mlx, game->width_map * 64, \
 		game->height_map * 64 + 20, "sooooo_long");
 	put_text(game);
-	mlx_hook(game->mlx_win, 2, 1L << 2, hook_keys, game);
+	mlx_hook(game->mlx_win, 2, 1L << 1, hook_keys, game);
 	mlx_hook(game->mlx_win, 17, 0, close_win, game);
 	mlx_loop_hook(game->mlx, loop, game);
 	mlx_loop(game->mlx);

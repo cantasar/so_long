@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 13:47:21 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/22 00:47:07 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/25 17:46:04 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,23 @@ void	coin_loop(t_data *game)
 	game->animate_count += 1;
 }
 
+// void	move_enemy(t_data *game)
+// {
+
+// 	int i = 0;
+// 	int j = 0;
+// 	while (game->map[i][j])
+// 	{
+// 		while(game->gam)
+// 	}
+	
+// 	printf("*");
+// }
+
 int	loop(t_data *game)
 {
+	// move_enemy(game);
 	coin_loop(game);
+	put_textures(game);
 	return (1);
 }
