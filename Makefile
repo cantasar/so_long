@@ -1,7 +1,7 @@
 NAME	=	so_long
 CFLAGS	=	-Wall -Wextra -Werror -I./mlx -g
 
-LFLAGS	=	-framework AppKit -framework OpenGL -L./mlx -lmlx
+LFLAGS	=	-framework AppKit -framework OpenGL -L./mlx -lmlx -fsanitize=address
 MLX		=	./mlx/libmlx.a
 
 LIBFT	=	./libft

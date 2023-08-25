@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 11:13:10 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/22 11:08:52 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/25 11:56:54 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	ber_control(argv[1]);
-	game = (t_data *)malloc(sizeof(t_data) * 1);
+	game = (t_data *)calloc(1, sizeof(t_data));
 	read_map(game, argv[1]);
 	loc_p(game);
 	flood_fill(game, 1, 1);
