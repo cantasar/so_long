@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 15:41:22 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/25 16:53:35 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/27 18:26:04 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,13 @@ void	loc_p(t_data *game)
 		while (game->map[i][j])
 		{
 			if (game->map[i][j] == 'P')
-			{
 				game->p_x = j;
+			if (game->map[i][j] == 'P')
 				game->p_y = i;
-			}
 			if (game->map[i][j] == 'E')
-			{
 				game->e_x = j;
+			if (game->map[i][j] == 'E')
 				game->e_y = i;
-			}
 			j++;
 		}
 		i++;

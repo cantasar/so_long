@@ -6,11 +6,75 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 13:47:21 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/25 17:46:04 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/28 15:20:33 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	move_enemy_l(t_data *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j])
+		{
+			if (game->map[i][j] == 'J' && (game->map[i][j - 1] == '0' || game->map[i][j - 1] == 'P'))
+			{
+				if (game->animate_count == 30)
+				{
+					if (game->map[i][j - 1] == 'P')
+					{
+						ft_printf("You Died by Jedi!!\n");
+						usleep(500);
+						close_win(game->mlx);
+					}
+					game->map[i][j - 1] = 'J';
+					game->map[i][j] = '0';
+					break ;
+				}
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	move_enemy_r(t_data *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j])
+		{
+			if (game->map[i][j] == 'J' && (game->map[i][j + 1] == '0' || game->map[i][j + 1] == 'P'))
+			{
+				if (game->animate_count == 10)
+				{
+					if (game->map[i][j + 1] == 'P')
+					{
+						ft_printf("You Died by Jedi!!\n");
+						usleep(500);
+						close_win(game->mlx);
+					}
+					game->map[i][j + 1] = 'J';
+					game->map[i][j] = '0';
+					break ;
+				}
+			}
+			j++;
+		}
+		i++;
+	}
+}
 
 void	coin_loop(t_data *game)
 {
@@ -30,7 +94,7 @@ void	coin_loop(t_data *game)
 	else if (game->animate_count == 30)
 		game->coin_cur = \
 			mlx_xpm_file_to_image(game->mlx, "./textures/sagg.xpm", &w, &w);
-	else if (game->animate_count >= 60)
+	else if (game->animate_count >= 40)
 	{
 		game->coin_cur = \
 			mlx_xpm_file_to_image(game->mlx, "./textures/bb8.xpm", &w, &w);
@@ -40,23 +104,11 @@ void	coin_loop(t_data *game)
 	game->animate_count += 1;
 }
 
-// void	move_enemy(t_data *game)
-// {
-
-// 	int i = 0;
-// 	int j = 0;
-// 	while (game->map[i][j])
-// 	{
-// 		while(game->gam)
-// 	}
-	
-// 	printf("*");
-// }
-
 int	loop(t_data *game)
 {
-	// move_enemy(game);
 	coin_loop(game);
+	move_enemy_l(game);
+	move_enemy_r(game);
 	put_textures(game);
 	return (1);
 }

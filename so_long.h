@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 11:13:18 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/25 11:56:26 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/08/27 19:55:12 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_data
 	int		e_y;
 
 	int		score;
+
+	int		enemy_flag;
 
 	int		height_map;
 	int		width_map;
