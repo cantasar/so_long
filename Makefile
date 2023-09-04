@@ -1,13 +1,10 @@
 NAME	=	so_long
 CFLAGS	=	-Wall -Wextra -Werror -I./mlx -g
-
+CC		= 	gcc
 LFLAGS	=	-framework AppKit -framework OpenGL -L./mlx -lmlx
-MLX		=	./mlx/libmlx.a
+LIB		=	./mlx/libmlx.a
 
 LIBFT	=	./libft
-
-GNL		=	gnl/get_next_line.c \
-			gnl/get_next_line_utils.c 
 
 PRINTF	=	./ft_printf
 
@@ -21,19 +18,20 @@ SRCS	=	so_long.c \
 			window/clear_win.c \
 			window/put_textures.c \
 			animation/animate_coin.c \
+			gnl/get_next_line.c \
+			gnl/get_next_line_utils.c 
 
 OBJS	=	$(SRCS:.c=.o)
-GNLOBJS	=	$(GNL:.c=.o)
 
-all : $(MLX) $(NAME)
+all:  $(NAME)
 
-$(MLX):
+$(NAME): $(LIB) $(OBJS)
+	$(CC) $(OBJS) $(CFLAGS) ./libft/libft.a ./ft_printf/libftprintf.a $(LFLAGS) -o $(NAME)
+
+$(LIB): 
 	make -C $(PRINTF)
-	make bonus -sC LIBFT
-	make -sC ./mlx
-
-$(NAME): $(OBJS) $(GNLOBJS)
-	gcc $(OBJS) $(GNLOBJS) $(LFLAGS) ./libft/libft.a ./ft_printf/libftprintf.a -o $(NAME)
+	make -C $(LIBFT)
+	make -C ./mlx
 
 clean:
 	rm -rf $(OBJS)
@@ -50,4 +48,4 @@ fclean: clean
 
 re : fclean all
 
-.PHONY: so_long clean fclean re
+.PHONY: all clean fclean re

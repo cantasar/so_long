@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 11:13:18 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/27 19:55:12 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/09/02 14:49:26 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "mlx/mlx.h"
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -87,10 +86,9 @@ int		hook_keys(int keycode, t_data *game);
 void	put_textures(t_data *game);
 void	put_text(t_data *game);
 
-void	change_coin(t_data *game);
 int		loop(t_data *game);
 
 char	*get_next_line(int fd);
-int	ft_printf(const char *str, ...);
+int		ft_printf(const char *str, ...);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:09:17 by ctasar            #+#    #+#             */
-/*   Updated: 2023/08/27 19:51:57 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/09/02 14:48:44 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	move(t_data *game, int y, int x)
 	game->p_x = x;
 	game->p_y = y;
 	game->score++;
-	printf("step: %d\n", game->score);
+	ft_printf("step: %d\n", game->score);
 }
 
 void	player_move(t_data *game, int x, int y)
@@ -53,8 +53,8 @@ void	player_move(t_data *game, int x, int y)
 	if (game->map[y][x] == 'J')
 	{
 		game->score++;
-		printf("step: %d\n", game->score);
-		printf("You Died\n");
+		ft_printf("step: %d\n", game->score);
+		ft_printf("You Died\n");
 		close_win(game);
 	}
 	if (game->count_col == 0)
@@ -62,8 +62,8 @@ void	player_move(t_data *game, int x, int y)
 		if (game->map[y][x] == 'E')
 		{
 			game->score++;
-			printf("step: %d\n", game->score);
-			printf("You Win\n");
+			ft_printf("step: %d\n", game->score);
+			ft_printf("You Win\n");
 			close_win(game);
 		}
 	}
