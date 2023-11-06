@@ -42,6 +42,7 @@ So, run ./so_long followed by the map:
 	
 	./so_long /maps/map.ber	
 
+<img src="game_img.png"/>
 	
 <h3 id="maps" align="center"> Maps </h3>   
 You can parse any kind of map, as long as it respects the below rules:
